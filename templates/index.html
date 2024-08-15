@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Clean Blog - Home Start</title>
+        <link rel="icon" type="image/x-icon" href="/static/assets/favicon.ico" />
+    </head>
+    <body>
+        <!--Navbar-->
+        {% include 'header.html' %}
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('static/assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-10">
+                        <div class="site-heading">
+                            <h1>The Pythoner's Blog</h1>
+                            <span class="subheading">A Bootstrap Blog Template Rendered by Flask</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <!-- Post preview-->
+                    {% for post in posts: %}
+                    <div class="post-preview">
+                        <a href="{{ url_for('post', index=post['id']) }}">
+                            <h2 class="post-title">{{ post['title'] }}</h2>
+                            <h3 class="post-subtitle">{{ post['subtitle'] }}</h3>
+                        </a>
+                        <p class="post-meta">
+                            Posted by
+                            <a href="https://www.graciasdev.com">GraciasDev</a>
+                            on {{ post['date'] }}
+                        </p>
+                    </div>
+                    {% endfor %}
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                    <!-- Pager-->
+                    <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer-->
+        {% include 'footer.html' %}

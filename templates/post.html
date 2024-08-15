@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>{{post['title']}}</title>
+        <link rel="icon" type="image/x-icon" href="/static/assets/favicon.ico" />
+    </head>
+    <body>
+        <!-- Navigation-->
+        {% include 'header.html' %}
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('{{post['image']}}')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>{{post['title']}}</h1>
+                            <h2 class="subheading">{{post['subtitle']}}</h2>
+                            <span class="meta">
+                                Posted by
+                                <a href="#!">GraciasDev</a>
+                                on {{post['date']}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <article class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <p>{{post['body']}}</p>
+                        <p>
+                            Placeholder text by
+                            <a href="http://npoint.io/">Space Ipsum</a>
+                            &middot; Images by
+                            <a href="https://unsplash.com/s/photos/python-programming">UNSPLASH on Python Programming</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <!-- Footer-->
+        {% include 'footer.html' %}
