@@ -1,8 +1,10 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from post import Post
+from email_manager import NewEmail
 import requests
 from random import random, randint, choice
 import datetime as dt
+
 
 months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
           'November', 'December']
@@ -48,6 +50,22 @@ def post(index):
             current_post = Post(post_item['id'], post_item['title'], post_item['subtitle'], post_item['body'],
                                 post_item['image_url'], post_date)
             return render_template('post.html', id=index, post=current_post)
+
+
+@app.route("/form-entry", methods=['POST'])
+def receive_data():
+    name = request.form['name']
+    email = request.form['email']
+    phone = request.form['phone']
+    message = request.form['message']
+
+    if request.method == "POST":
+        if name != "" and email != "" and phone != "" and message != "":
+            new_email = NewEmail()
+            new_email.send_email(name, phone, email, message)
+            return render_template('contact.html', success="Successfully sent your message!")
+        else:
+            return render_template('contact.html', success="Fill out all inputs!")
 
 
 if __name__ == "__main__":
